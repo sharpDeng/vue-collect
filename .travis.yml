@@ -1,0 +1,17 @@
+language: "node"
+node_js:
+  - "10"
+
+after_script:
+  - npm run build
+  - cd ./docs/.vuepress/dist
+  - git init 
+  - git config user.name "${USER_NAME}"
+  - git config user.email "${USER_EMAIL}"
+  - git add .
+  - git commit -m "publish vuepress"
+  - git push --force --quiet "http://${ACC_TOKEN}@${GH_REF}" master:${BRANCH}
+
+branch:
+  only:
+    - master
