@@ -182,4 +182,4 @@ store.commit = function(mutation, ...payload) {
 
 **在 Vue 2.x 中，被传入的对象会直接被 Vue.observable 改变，所以如这里展示的，它和被返回的对象是同一个对象。在 Vue 3.x 中，则会返回一个可响应的代理，而对源对象直接进行修改仍然是不可响应的。因此，为了向前兼容，我们推荐始终操作使用 Vue.observable 返回的对象，而不是传入源对象。**
 
-这个简单点说就是，在vue2.6+ 中上面的`state` 和 `store` 是同一个对象 `state === store`（有vue2 的响应式实现原因有关）, 你操作那个都行；但在 `vue3` 中，响应式的是用 `proxy` 进行的，`store` 和 `state` 不是用一个对象， 同时 `state` 是不具备响应式的; 所以为你的代码能向前兼容，操作对象时，是用`Vue.observable`的返回值， 即`store` 进行 
+这个简单点说就是，在vue2.6+ 中上面的`state` 和 `store` 是同一个对象 `state === store`（有vue2 的响应式实现原因有关）, 你操作那个都行；但在 `vue3` 中，响应式的是用 `proxy` 进行的，`store` 和 `state` 不是用一个对象， 同时 `state` 是不具备响应式的; 所以为你的代码能向前兼容，操作对象时，是用`Vue.observable`的返回值， 即`store` 进行
